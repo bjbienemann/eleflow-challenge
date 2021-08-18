@@ -17,8 +17,10 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     volumes: 
       - mysql_data:/var/lib/mysql
-    networks: 
-      - default
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
   api:
     image: bienemann/challenge:latest
     build: 
@@ -29,4 +31,6 @@ services:
     environment: 
       - MYSQL_HOST
       - MYSQL_PASSWORD
-
+    depends_on:
+       mysql:
+         condition: service_healthy
