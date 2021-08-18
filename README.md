@@ -35,7 +35,7 @@ Segue o comando para execução:
 mvnw spring-boot:run
 ```
 
-## Documetação
+## Documentação
 A documentação está disponível com OpenAPI e Swagger, segue o link para acesso local:
 ```
 http://localhost:8080/swagger-ui.html
