@@ -35,6 +35,12 @@ Segue o comando para execução:
 mvnw spring-boot:run
 ```
 
+### Testes
+Para executar os testes de integração precisamos do docker, estamos utilizando testcontainers para iniciar um container de testes com mysql que deve ser descartado ao fim da execução. Segue o comando:
+```
+mvnw verify
+```
+
 ## Documetação
 A documentação está disponível com OpenAPI e Swagger, segue o link para acesso local:
 ```
