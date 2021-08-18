@@ -1,0 +1,12 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/challenge
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:m3e&tdmUmCqR}
+  flyway:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/challenge?createDatabaseIfNotExist=true&useSSL=false
+    user: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:m3e&tdmUmCqR}
+
+swapi:
+  url: https://swapi.dev/api

@@ -1,0 +1,18 @@
+FROM adoptopenjdk:11-hotspot as build
+WORKDIR /challenge/api
+
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+
+RUN ./mvnw install -DskipTests
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+
+FROM adoptopenjdk:11-hotspot
+VOLUME /tmp
+ARG DEPENDENCY=/challenge/api/target/dependency
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /api/lib
+COPY --from=build ${DEPENDENCY}/META-INF /api/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /api
+ENTRYPOINT ["java","-cp","api:api/lib/*","br.com.eleflow.challenge.EleflowChallengeApplication"]

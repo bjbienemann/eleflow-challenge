@@ -1,0 +1,12 @@
+-- challenge
+CREATE TABLE challenge.planet (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(100) NULL,
+	climate VARCHAR(100) NULL,
+	terrain VARCHAR(100) NULL,
+	films INT DEFAULT 0 NULL,
+	CONSTRAINT planet_pk PRIMARY KEY (id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8
+COLLATE=utf8_general_ci;
